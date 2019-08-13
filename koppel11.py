@@ -173,13 +173,18 @@ def main():
         description="Tira submission for PPM approach (koppel11)")
     parser.add_argument("-i", action="store", help="path to corpus directory")
     parser.add_argument("-o", action="store", help="path to output directory")
+    parser.add_argument("-r", action="store", help="number of repititions")
     args = vars(parser.parse_args())
 
     corpusdir = args["i"]
     outputdir = args["o"]
+    repss = args["r"]
     if corpusdir == None or outputdir == None:
         parser.print_help()
         return
+
+    if repss != None:
+        repetitions = int(repss)
 
     candidates = jsonhandler.candidates
     unknowns = jsonhandler.unknowns
